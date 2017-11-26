@@ -4,14 +4,8 @@ use std::ops::{AddAssign, SubAssign, MulAssign, DivAssign};
 use std::iter::{Iterator, Sum};
 use std::cmp::{PartialEq, PartialOrd, Ordering};
 
+use Greenback;
 use util::add_commas;
-
-#[derive(Copy,Clone)]
-pub struct Greenback {
-    // really, the number of cents but since there's also a function
-    // called cents(), let's avoid unnecessary confusion
-    raw_value: i32,
-}
 
 impl Greenback {
     pub fn new(dollars: i32, cents: i32) -> Greenback {

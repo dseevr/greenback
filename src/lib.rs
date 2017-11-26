@@ -1,6 +1,13 @@
 pub mod greenback;
 pub mod util;
 
+#[derive(Copy,Clone)]
+pub struct Greenback {
+    // really, the number of cents but since there's also a function
+    // called cents(), let's avoid unnecessary confusion
+    raw_value: i32,
+}
+
 #[cfg(test)]
 mod tests {
     use std::cmp::{PartialOrd, Ordering};
