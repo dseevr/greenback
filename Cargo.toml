@@ -1,0 +1,11 @@
+[package]
+description = "Library for safely handling USD values as integers"
+name = "greenback"
+version = "0.0.1"
+authors = ["Bill Robinson <dseevr@users.noreply.github.com>"]
+homepage = "https://github.com/dseevr/greenback"
+repository = "https://github.com/dseevr/greenback"
+readme = "README.md"
+license = "BSD-3-Clause"
+
+[dependencies]
