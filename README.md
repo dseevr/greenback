@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/dseevr/greenback.svg?branch=master)](https://travis-ci.org/dseevr/greenback)
+
 # greenback
 
 Library for safely handling USD values as integers
@@ -29,7 +31,7 @@ fn main() {
 
     println!("Total cost: {}", total_cost);
 
-    // example 2
+    // summation example
 
     let foo = Greenback::from_float(1.23); // $1.23
     let bar = Greenback::from_cents(4_56); // $4.56
