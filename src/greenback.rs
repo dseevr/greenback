@@ -1,8 +1,8 @@
 use std::fmt;
-use std::ops::{Add, Sub, Mul, Div};
-use std::ops::{AddAssign, SubAssign, MulAssign, DivAssign};
+use std::ops::{Add, Div, Mul, Sub};
+use std::ops::{AddAssign, DivAssign, MulAssign, SubAssign};
 use std::iter::{Iterator, Sum};
-use std::cmp::{PartialEq, PartialOrd, Ordering};
+use std::cmp::{Ordering, PartialEq, PartialOrd};
 
 use Greenback;
 use util::add_commas;
@@ -23,21 +23,17 @@ impl Greenback {
     }
 
     pub fn from_cents(cents: i32) -> Greenback {
-        Greenback{
-            raw_value: cents,
-        }
+        Greenback { raw_value: cents }
     }
 
     pub fn from_float(f: f32) -> Greenback {
-        Greenback{
-            raw_value: (f * 100.0).round() as i32
+        Greenback {
+            raw_value: (f * 100.0).round() as i32,
         }
     }
 
     pub fn zero() -> Greenback {
-        Greenback{
-            raw_value: 0,
-        }
+        Greenback { raw_value: 0 }
     }
 
     pub fn dollars(&self) -> i32 {
@@ -57,7 +53,7 @@ impl Add for Greenback {
     type Output = Greenback;
 
     fn add(self, rhs: Greenback) -> Greenback {
-        Greenback{
+        Greenback {
             raw_value: self.raw_value + rhs.raw_value,
         }
     }
@@ -67,7 +63,7 @@ impl Sub for Greenback {
     type Output = Greenback;
 
     fn sub(self, rhs: Greenback) -> Greenback {
-        Greenback{
+        Greenback {
             raw_value: self.raw_value - rhs.raw_value,
         }
     }
@@ -77,7 +73,7 @@ impl Mul<i32> for Greenback {
     type Output = Greenback;
 
     fn mul(self, rhs: i32) -> Greenback {
-        Greenback{
+        Greenback {
             raw_value: self.raw_value * rhs,
         }
     }
@@ -89,9 +85,7 @@ impl Div<i32> for Greenback {
     fn div(self, rhs: i32) -> Greenback {
         let cents = (self.raw_value as f32 / rhs as f32).round() as i32;
 
-        Greenback{
-            raw_value: cents,
-        }
+        Greenback { raw_value: cents }
     }
 }
 
@@ -131,7 +125,10 @@ impl PartialEq for Greenback {
 }
 
 impl Sum for Greenback {
-    fn sum<I>(iter: I) -> Greenback where I: Iterator<Item=Greenback> {
+    fn sum<I>(iter: I) -> Greenback
+    where
+        I: Iterator<Item = Greenback>,
+    {
         iter.fold(Greenback::zero(), Add::add)
     }
 }
