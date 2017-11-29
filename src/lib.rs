@@ -1,7 +1,7 @@
 pub mod greenback;
 pub mod util;
 
-#[derive(Copy,Clone)]
+#[derive(Copy, Clone)]
 pub struct Greenback {
     // really, the number of cents but since there's also a function
     // called cents(), let's avoid unnecessary confusion
@@ -131,7 +131,7 @@ mod tests {
     #[test]
     fn test_ordering() {
         let large = Greenback::new(10, 50);
-        let same  = Greenback::new(10, 50);
+        let same = Greenback::new(10, 50);
         let small = Greenback::new(0, 25);
 
         assert_eq!(small.partial_cmp(&large), Some(Ordering::Less));
@@ -159,28 +159,28 @@ mod tests {
 
         println!("");
 
-        test(0,          "$0.00");
-        test(1,          "$0.01");
-        test(11,         "$0.11");
-        test(111,        "$1.11");
-        test(1111,       "$11.11");
-        test(11111,      "$111.11");
-        test(111111,     "$1,111.11");
-        test(1111111,    "$11,111.11");
-        test(11111111,   "$111,111.11");
-        test(111111111,  "$1,111,111.11");
+        test(0, "$0.00");
+        test(1, "$0.01");
+        test(11, "$0.11");
+        test(111, "$1.11");
+        test(1111, "$11.11");
+        test(11111, "$111.11");
+        test(111111, "$1,111.11");
+        test(1111111, "$11,111.11");
+        test(11111111, "$111,111.11");
+        test(111111111, "$1,111,111.11");
         test(1111111111, "$11,111,111.11");
 
-        test(-0,          "$0.00");
-        test(-1,          "-$0.01");
-        test(-11,         "-$0.11");
-        test(-111,        "-$1.11");
-        test(-1111,       "-$11.11");
-        test(-11111,      "-$111.11");
-        test(-111111,     "-$1,111.11");
-        test(-1111111,    "-$11,111.11");
-        test(-11111111,   "-$111,111.11");
-        test(-111111111,  "-$1,111,111.11");
+        test(-0, "$0.00");
+        test(-1, "-$0.01");
+        test(-11, "-$0.11");
+        test(-111, "-$1.11");
+        test(-1111, "-$11.11");
+        test(-11111, "-$111.11");
+        test(-111111, "-$1,111.11");
+        test(-1111111, "-$11,111.11");
+        test(-11111111, "-$111,111.11");
+        test(-111111111, "-$1,111,111.11");
         test(-1111111111, "-$11,111,111.11");
     }
 }

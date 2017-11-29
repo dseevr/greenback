@@ -9,7 +9,11 @@ pub fn add_commas<T: ToString>(input: T) -> String {
     let int_string = input.to_string();
 
     if num_commas > 0 {
-        let mut left_offset = if num_commas > 0 { int_string.len() % 3 as usize } else { 0 };
+        let mut left_offset = if num_commas > 0 {
+            int_string.len() % 3 as usize
+        } else {
+            0
+        };
         let mut byte_string = int_string.as_bytes().to_vec();
 
         if num_digits % 3 == 0 {
@@ -17,9 +21,9 @@ pub fn add_commas<T: ToString>(input: T) -> String {
             num_commas -= 1;
         }
 
-        for _ in 1..(num_commas+1) {
+        for _ in 1..(num_commas + 1) {
             byte_string.insert(left_offset, ",".as_bytes()[0]);
-            left_offset += 3 + 1; // +1 to account for the byte we inserted	
+            left_offset += 3 + 1; // +1 to account for the byte we inserted
         }
 
         String::from_utf8(byte_string).unwrap()
