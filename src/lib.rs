@@ -10,8 +10,8 @@ pub struct Greenback {
 
 #[cfg(test)]
 mod tests {
-    use std::cmp::{PartialOrd, Ordering};
-    use greenback::Greenback;
+    use std::cmp::Ordering;
+    use Greenback;
 
     #[test]
     fn test_constructors() {
