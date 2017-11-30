@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/dseevr/greenback.svg?branch=master)](https://travis-ci.org/dseevr/greenback)
+[![greenback on crates.io](https://img.shields.io/crates/v/greenback.svg)](https://crates.io/crates/greenback) [![Build Status](https://travis-ci.org/dseevr/greenback.svg?branch=master)](https://travis-ci.org/dseevr/greenback)
 
 # greenback
 
