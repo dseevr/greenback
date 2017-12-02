@@ -10,7 +10,7 @@ Edit `Cargo.toml`:
 
 ```toml
 [dependencies]
-greenback="0.0.2"
+greenback="0.0.3"
 ```
 
 ## Usage
