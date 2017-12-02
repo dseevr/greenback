@@ -144,6 +144,14 @@ mod tests {
         assert!(small <= large);
         assert!(large >= same);
         assert!(large <= same);
+
+        let huge = Greenback::new(999, 99);
+
+        let mut items = vec![huge, small, large];
+        items.sort();
+
+        assert!(*items.first().unwrap() == small);
+        assert!(*items.last().unwrap() == huge);
     }
 
     #[test]

@@ -2,7 +2,7 @@ use std::fmt;
 use std::ops::{Add, Div, Mul, Sub};
 use std::ops::{AddAssign, DivAssign, MulAssign, SubAssign};
 use std::iter::{Iterator, Sum};
-use std::cmp::{Ordering, PartialEq, PartialOrd};
+use std::cmp::{Eq, Ord, Ordering, PartialEq, PartialOrd};
 
 use Greenback;
 use util::add_commas;
@@ -160,6 +160,15 @@ impl PartialOrd for Greenback {
         self > rhs || self == rhs
     }
 }
+
+impl Eq for Greenback {}
+
+impl Ord for Greenback {
+    fn cmp(&self, other: &Greenback) -> Ordering {
+        self.raw_value.cmp(&other.raw_value)
+    }
+}
+
 
 // TODO: figure out a way to have the output format configurable
 impl fmt::Display for Greenback {
