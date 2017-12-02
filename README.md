@@ -57,4 +57,4 @@ This is my first Rust package and I'm still learning Rust so user beware!
 
 Pull requests and issues are very welcome.
 
-All the basic arithmetic operations (Add, AddMul, Sub, SubMul, etc.) are implemented along with ordering and summing.  There's also a default formatter which will print your money values like `$1,234.56`.  There's no overflow detection and only limited support for Mul and Div traits.  I need to figure out how to do these using generics properly.
+All the basic arithmetic operations (Add, AddMul, Sub, SubMul, etc.) are implemented along with ordering and summing.  There's also a default formatter which will print your money values like `$1,234.56`.  There's no overflow detection currently.  The internal cents value is an i32 for now until I can figure out how to implement traits for a bunch of integer types at once.
