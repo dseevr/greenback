@@ -165,7 +165,7 @@ mod tests {
             assert!(res == s);
         }
 
-        println!("");
+        println!();
 
         test(0, "$0.00");
         test(1, "$0.01");

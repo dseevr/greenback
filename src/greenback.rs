@@ -1,11 +1,11 @@
+use std::cmp::{Eq, Ord, Ordering, PartialEq, PartialOrd};
 use std::fmt;
+use std::iter::{Iterator, Sum};
 use std::ops::{Add, Div, Mul, Sub};
 use std::ops::{AddAssign, DivAssign, MulAssign, SubAssign};
-use std::iter::{Iterator, Sum};
-use std::cmp::{Eq, Ord, Ordering, PartialEq, PartialOrd};
 
-use Greenback;
 use util::add_commas;
+use Greenback;
 
 impl Greenback {
     pub fn new(dollars: i32, cents: i32) -> Greenback {
@@ -36,15 +36,15 @@ impl Greenback {
         Greenback { raw_value: 0 }
     }
 
-    pub fn dollars(&self) -> i32 {
+    pub fn dollars(self) -> i32 {
         self.raw_value / 100
     }
 
-    pub fn cents(&self) -> i32 {
+    pub fn cents(self) -> i32 {
         self.raw_value % 100
     }
 
-    pub fn raw_value(&self) -> i32 {
+    pub fn raw_value(self) -> i32 {
         self.raw_value
     }
 }
@@ -118,10 +118,6 @@ impl PartialEq for Greenback {
     fn eq(&self, rhs: &Greenback) -> bool {
         self.raw_value == rhs.raw_value
     }
-
-    fn ne(&self, rhs: &Greenback) -> bool {
-        self.raw_value != rhs.raw_value
-    }
 }
 
 impl Sum for Greenback {
@@ -149,7 +145,7 @@ impl PartialOrd for Greenback {
     }
 
     fn le(&self, rhs: &Greenback) -> bool {
-        self < rhs || self == rhs
+        self <= rhs
     }
 
     fn gt(&self, rhs: &Greenback) -> bool {
@@ -157,7 +153,7 @@ impl PartialOrd for Greenback {
     }
 
     fn ge(&self, rhs: &Greenback) -> bool {
-        self > rhs || self == rhs
+        self >= rhs
     }
 }
 
@@ -169,7 +165,6 @@ impl Ord for Greenback {
     }
 }
 
-
 // TODO: figure out a way to have the output format configurable
 impl fmt::Display for Greenback {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -179,7 +174,7 @@ impl fmt::Display for Greenback {
             f,
             "{}${}.{cents:>0width$}",
             sign,
-            add_commas(self.dollars().abs()),
+            add_commas(&self.dollars().abs()),
             cents = self.cents().abs(),
             width = 2
         )

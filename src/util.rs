@@ -1,5 +1,5 @@
 // TODO: this entire function needs to be optimized and genericized
-pub fn add_commas<T: ToString>(input: T) -> String {
+pub fn add_commas<T: ToString>(input: &T) -> String {
     // TODO: replace with a loop that divides by 10 repeatedly once
     //       the generic integer stuff is figured out
     let num_digits = input.to_string().as_bytes().len();
@@ -21,7 +21,7 @@ pub fn add_commas<T: ToString>(input: T) -> String {
             num_commas -= 1;
         }
 
-        for _ in 1..(num_commas + 1) {
+        for _ in 1..=num_commas {
             byte_string.insert(left_offset, ",".as_bytes()[0]);
             left_offset += 3 + 1; // +1 to account for the byte we inserted
         }
